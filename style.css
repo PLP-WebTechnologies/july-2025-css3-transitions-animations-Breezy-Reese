@@ -1,0 +1,91 @@
+/* ===========================
+Part 1: CSS Animations
+=========================== */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button hover animation */
+.animated-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+/* Box animation */
+.animated-box {
+  width: 100px;
+  height: 100px;
+  background-color: #2196F3;
+  margin-top: 20px;
+  border-radius: 8px;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+/* Card flip animation */
+.card {
+  width: 150px;
+  height: 200px;
+  perspective: 1000px;
+  margin-top: 20px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: white;
+}
+
+.card-front {
+  background-color: #f44336;
+}
+
+.card-back {
+  background-color: #3f51b5;
+  transform: rotateY(180deg);
+}
+
+/* Box keyframe animation */
+@keyframes boxMove {
+  0% { transform: translateX(0) rotate(0deg); background-color: #2196F3; }
+  25% { transform: translateX(50px) rotate(45deg); background-color: #f44336; }
+  50% { transform: translateX(0) rotate(90deg); background-color: #4CAF50; }
+  75% { transform: translateX(-50px) rotate(135deg); background-color: #ffeb3b; }
+  100% { transform: translateX(0) rotate(180deg); background-color: #2196F3; }
+}
+
+/* Add this class for JS-triggered animation */
+.animated-box.animate {
+  animation: boxMove 3s linear infinite;
+}
